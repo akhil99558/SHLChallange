@@ -1,0 +1,42 @@
+course_id,title,product_url,remote_testing,adaptive_irt,test_type
+57,Account Manager Solution,https://www.shl.com/solutions/products/product-catalog/view/account-manager-solution/,Yes,Yes,"C, P, A, B"
+144,Administrative Professional - Short Form,https://www.shl.com/solutions/products/product-catalog/view/administrative-professional-short-form/,Yes,Yes,"A, K, P"
+71,Agency Manager Solution,https://www.shl.com/solutions/products/product-catalog/view/agency-manager-solution/,Yes,Yes,"A, B, P, S"
+521,Apprentice + 8.0 Job Focused Assessment,https://www.shl.com/solutions/products/product-catalog/view/apprentice-8-0-job-focused-assessment-4261/,Yes,No,"B, P"
+520,Apprentice 8.0 Job Focused Assessment,https://www.shl.com/solutions/products/product-catalog/view/apprentice-8-0-job-focused-assessment/,Yes,No,"B, P"
+41,Bank Administrative Assistant - Short Form,https://www.shl.com/solutions/products/product-catalog/view/bank-administrative-assistant-short-form/,Yes,No,"A, B, K, P"
+31,Bank Collections Agent - Short Form,https://www.shl.com/solutions/products/product-catalog/view/bank-collections-agent-short-form/,Yes,No,"A, B, P"
+42,Bank Operations Supervisor - Short Form,https://www.shl.com/solutions/products/product-catalog/view/bank-operations-supervisor-short-form/,Yes,Yes,"A, B, P, S"
+102,Bilingual Spanish Reservation Agent Solution,https://www.shl.com/solutions/products/product-catalog/view/bilingual-spanish-reservation-agent-solution/,Yes,Yes,"B, P, S, A"
+83,"Bookkeeping, Accounting, Auditing Clerk Short Form",https://www.shl.com/solutions/products/product-catalog/view/bookkeeping-accounting-auditing-clerk-short-form/,Yes,Yes,"P, S, K, B, A"
+30,Branch Manager - Short Form,https://www.shl.com/solutions/products/product-catalog/view/branch-manager-short-form/,Yes,No,"A, B, P"
+45,Cashier Solution,https://www.shl.com/solutions/products/product-catalog/view/cashier-solution/,Yes,Yes,"B, A, P"
+57,Account Manager Solution,https://www.shl.com/solutions/products/product-catalog/view/account-manager-solution/,Yes,Yes,"C, P, A, B"
+144,Administrative Professional - Short Form,https://www.shl.com/solutions/products/product-catalog/view/administrative-professional-short-form/,Yes,Yes,"A, K, P"
+71,Agency Manager Solution,https://www.shl.com/solutions/products/product-catalog/view/agency-manager-solution/,Yes,Yes,"A, B, P, S"
+521,Apprentice + 8.0 Job Focused Assessment,https://www.shl.com/solutions/products/product-catalog/view/apprentice-8-0-job-focused-assessment-4261/,Yes,No,"B, P"
+520,Apprentice 8.0 Job Focused Assessment,https://www.shl.com/solutions/products/product-catalog/view/apprentice-8-0-job-focused-assessment/,Yes,No,"B, P"
+41,Bank Administrative Assistant - Short Form,https://www.shl.com/solutions/products/product-catalog/view/bank-administrative-assistant-short-form/,Yes,No,"A, B, K, P"
+31,Bank Collections Agent - Short Form,https://www.shl.com/solutions/products/product-catalog/view/bank-collections-agent-short-form/,Yes,No,"A, B, P"
+42,Bank Operations Supervisor - Short Form,https://www.shl.com/solutions/products/product-catalog/view/bank-operations-supervisor-short-form/,Yes,Yes,"A, B, P, S"
+102,Bilingual Spanish Reservation Agent Solution,https://www.shl.com/solutions/products/product-catalog/view/bilingual-spanish-reservation-agent-solution/,Yes,Yes,"B, P, S, A"
+83,"Bookkeeping, Accounting, Auditing Clerk Short Form",https://www.shl.com/solutions/products/product-catalog/view/bookkeeping-accounting-auditing-clerk-short-form/,Yes,Yes,"P, S, K, B, A"
+30,Branch Manager - Short Form,https://www.shl.com/solutions/products/product-catalog/view/branch-manager-short-form/,Yes,No,"A, B, P"
+45,Cashier Solution,https://www.shl.com/solutions/products/product-catalog/view/cashier-solution/,Yes,Yes,"B, A, P"
+515,Industrial - Semi-skilled 7.1 (Americas),https://www.shl.com/solutions/products/product-catalog/view/industrial-semi-skilled-7-1-%28americas%29/,Yes,No,B
+514,Industrial - Semi-skilled 7.1 (International),https://www.shl.com/solutions/products/product-catalog/view/industrial-semi-skilled-7-1-%28international%29/,Yes,No,B
+522,Industrial Professional and Skilled 7.1 (Americas),https://www.shl.com/solutions/products/product-catalog/view/industrial-professional-and-skilled-7-1-%28americas%29/,Yes,No,"A, B"
+523,Industrial Professional and Skilled 7.1 Solution,https://www.shl.com/solutions/products/product-catalog/view/industrial-professional-and-skilled-7-1-solution/,Yes,No,"A, B"
+138,Installation and Repair Technician Solution,https://www.shl.com/solutions/products/product-catalog/view/installation-and-repair-technician-solution/,Yes,Yes,"A, B, P, S"
+75,Insurance Account Manager Solution,https://www.shl.com/solutions/products/product-catalog/view/insurance-account-manager-solution/,Yes,Yes,"A, B, P, S"
+76,Insurance Administrative Assistant Solution,https://www.shl.com/solutions/products/product-catalog/view/insurance-administrative-assistant-solution/,Yes,Yes,"A, B, P, S"
+77,Insurance Agent Solution,https://www.shl.com/solutions/products/product-catalog/view/insurance-agent-solution/,Yes,Yes,"A, B, P"
+79,Insurance Director Solution,https://www.shl.com/solutions/products/product-catalog/view/insurance-director-solution/,Yes,Yes,"A, B, P"
+80,Insurance Sales Manager Solution,https://www.shl.com/solutions/products/product-catalog/view/insurance-sales-manager-solution/,Yes,Yes,"A, B, P, S"
+84,Manager - Short Form,https://www.shl.com/solutions/products/product-catalog/view/manager-short-form/,Yes,Yes,"A, B, K, P, S"
+235,Manager + 7.0 Solution,https://www.shl.com/solutions/products/product-catalog/view/manager-7-0-solution-3955/,Yes,Yes,"A, B, C"
+,Written English v1,https://www.shl.com/solutions/products/product-catalog/view/written-english-v1/,Yes,Yes,Test Type
+,Written Spanish,https://www.shl.com/solutions/products/product-catalog/view/written-spanish/,Yes,Yes,Test Type
+,Zabbix (New),https://www.shl.com/solutions/products/product-catalog/view/zabbix-new/,Yes,Yes,Test Type
+,360 Digital Report,https://www.shl.com/solutions/products/product-catalog/view/360-digital-report/,Yes,Yes,Test Type
+,360° Multi-Rater Feedback System (MFS),https://www.shl.com/solutions/products/product-catalog/view/360-multi-rater-feedback-system-mfs/,Yes,Yes,Test Type
