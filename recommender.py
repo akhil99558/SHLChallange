@@ -23,95 +23,85 @@ df = load_data()
 
 if df is not None:
     # Clean up the data
-    # Remove leading spaces in categorical columns
-    for col in ['test_type', 'job_levels', 'languages']:
+    for col in ['title', 'test_type', 'job_levels', 'languages', 'description']:
         if col in df.columns:
-            df[col] = df[col].astype(str).str.strip()
-    
-    # Create input form
-    st.subheader("Enter Your Requirements")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        organization_name = st.text_input("Name of Organization")
-        
-        # Get unique values from the dataset for test_type
-        test_types = sorted(df['test_type'].unique().tolist())
-        test_type = st.selectbox("Type of Test", test_types)
-    
-    with col2:
-        # Get unique values from the dataset for job_levels
-        job_levels = sorted(df['job_levels'].unique().tolist())
-        experience = st.selectbox("Experience of candidates to be tested", job_levels)
-        
-        # Get unique values from the dataset for languages
-        languages = sorted(df['languages'].unique().tolist())
-        language = st.selectbox("Languages To be conducted in", languages)
-    
-    # Button to trigger recommendation
+            df[col] = df[col].fillna('').astype(str).str.strip()
+
+    # Simple plaintext input area
+    st.subheader("What are you looking for?")
+    user_input = st.text_area(
+        "Describe your needs in plain language:",
+        placeholder="Example: I need a personality assessment for senior managers in English",
+        height=100
+    )
+
     if st.button("Get Recommendations"):
-        if not organization_name:
-            st.warning("Please enter organization name")
+        if not user_input.strip():
+            st.warning("Please enter a description of your requirements.")
         else:
-            # Filter DataFrame based on selections
-            filtered_df = df.copy()
-            
-            if test_type:
-                filtered_df = filtered_df[filtered_df['test_type'] == test_type]
-            
-            if experience:
-                filtered_df = filtered_df[filtered_df['job_levels'] == experience]
-            
-            if language:
-                filtered_df = filtered_df[filtered_df['languages'] == language]
-            
-            # If we have filtered results, show them
-            if not filtered_df.empty:
-                st.success(f"Found {len(filtered_df)} matching courses for {organization_name}")
+            with st.spinner("Finding the best matches..."):
+                # Combine relevant features into one string for better matching
+                df['combined_features'] = (
+                    df['title'] + ' ' + 
+                    df['test_type'] + ' ' + 
+                    df['job_levels'] + ' ' + 
+                    df['languages'] + ' ' + 
+                    df['description']
+                )
+
+                # Vectorize and calculate similarity
+                tfidf = TfidfVectorizer(stop_words='english')
+                tfidf_matrix = tfidf.fit_transform(df['combined_features'])
+                user_vec = tfidf.transform([user_input])
+                similarity_scores = cosine_similarity(user_vec, tfidf_matrix).flatten()
                 
-                # If we have more than 3 results, use content-based filtering to get top 3
-                if len(filtered_df) > 3:
-                    # Create a simple content-based filtering
-                    # Combine relevant features for similarity calculation
-                    filtered_df['combined_features'] = filtered_df['title'] + ' ' + \
-                                                     filtered_df['test_type'] + ' ' + \
-                                                     filtered_df['job_levels'] + ' ' + \
-                                                     filtered_df['languages'] + ' ' + \
-                                                     filtered_df['description'].fillna('')
-                    
-                    # Create TF-IDF vectorizer
-                    tfidf = TfidfVectorizer(stop_words='english')
-                    tfidf_matrix = tfidf.fit_transform(filtered_df['combined_features'])
-                    
-                    # Calculate similarity scores between courses
-                    cosine_sim = cosine_similarity(tfidf_matrix, tfidf_matrix)
-                    
-                    # Get the indices of the top courses based on average similarity
-                    course_similarity = cosine_sim.mean(axis=1)
-                    top_indices = course_similarity.argsort()[-3:][::-1]
-                    recommended_df = filtered_df.iloc[top_indices]
-                else:
-                    recommended_df = filtered_df
-                
-                # Display recommendations
-                st.subheader("Top Recommendations")
+                # Get the top 3 recommendations
+                top_indices = similarity_scores.argsort()[-3:][::-1]
+                recommended_df = df.iloc[top_indices]
+
+                # Display recommendations in a visually appealing format
+                st.subheader("Top 3 Recommendations")
                 
                 for i, (_, row) in enumerate(recommended_df.iterrows(), 1):
-                    st.markdown(f"### {i}. {row['title']}")
-                    st.markdown(f"**Course ID:** {row['course_id']}")
-                    if 'description' in row and pd.notna(row['description']):
-                        st.markdown(f"**Description:** {row['description']}")
+                    # Create a card-like structure for each recommendation
+                    col1, col2 = st.columns([3, 1])
                     
-                    if 'product_url' in row and pd.notna(row['product_url']):
-                        st.markdown(f"[Go to Course]({row['product_url']})")
+                    with col1:
+                        st.markdown(f"### {i}. {row['title']}")
+                        
+                        # Display key information
+                        if 'test_type' in row and row['test_type']:
+                            st.markdown(f"**Type:** {row['test_type']}")
+                            
+                        if 'job_levels' in row and row['job_levels']:
+                            st.markdown(f"**Suitable for:** {row['job_levels']}")
+                            
+                        if 'languages' in row and row['languages']:
+                            st.markdown(f"**Available in:** {row['languages']}")
+                            
+                        if 'description' in row and row['description']:
+                            st.markdown(f"**Description:** {row['description']}")
+                    
+                    with col2:
+                        st.markdown(f"**Course ID:** {row['course_id']}")
+                        
+                        if 'product_url' in row and row['product_url']:
+                            st.markdown(f"[View Details]({row['product_url']})")
                     
                     st.markdown("---")
-            else:
-                st.warning("No courses found matching your criteria. Try changing some filters.")
+                
+                # Add similarity score information - FIXED to avoid NumPy type error
+                with st.expander("Match Details"):
+                    # Convert to Python float first, then format as percentage string
+                    percentages = [f"{float(score * 100):.2f}%" for score in similarity_scores[top_indices]]
+                    match_info = pd.DataFrame({
+                        'Course': recommended_df['title'].values,
+                        'Match Score': percentages
+                    })
+                    st.table(match_info)
 else:
     st.error("Could not load the course data. Please check if the file exists and is valid.")
 
-# Add some information at the bottom
+# Footer
 st.markdown("---")
 st.markdown("© 2025 Course Recommendation System")
